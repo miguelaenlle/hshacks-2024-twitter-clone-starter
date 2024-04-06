@@ -21,43 +21,12 @@ function App() {
   }
 
   const handleLoadTweets = async () => {
-    const response = await fetch("http://localhost:4000/tweets")
-    const json = await response.json()
-    setTweets(json.tweets)
   }
 
   const handleAddTweet = async () => {
-    const response = await fetch("http://localhost:4000/tweets", {
-      method: "POST",
-      body: JSON.stringify({
-        sender: yourName,
-        senderPFP: yourPFP,
-        content,
-        imageUrl: contentImage
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    })
-
-    const json = await response.json()
-    const tweet = json.tweet
-
-    setTweets([tweet, ...tweets]);
-    handleResetInputs();
   }
 
   const handleDeleteTweet = async (id) => {
-    const response = await fetch(`http://localhost:4000/tweets/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    })
-
-    const json = await response.json()
-    setTweets(tweets.filter(tweet => tweet._id !== id));
-    handleResetInputs();
   }
 
 

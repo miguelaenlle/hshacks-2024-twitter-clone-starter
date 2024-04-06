@@ -28,23 +28,6 @@ const Tweet = (
 
 
     const handleSaveData = async () => {
-        const response = await fetch(`http://localhost:4000/tweets/${props._id}`, {
-            method: "PUT",
-            body: JSON.stringify({
-                sender: yourName,
-                senderPFP: yourPFP,
-                content,
-                imageUrl: contentImage
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-
-        await response.json()
-        setEditing(false)
-        handleResetInputs();
-        props.handleReload()
     }
 
     if (editing) {
