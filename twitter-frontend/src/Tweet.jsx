@@ -8,22 +8,16 @@ const Tweet = (
     const [editing, setEditing] = useState(false);
 
     const [yourName, setYourName] = useState("");
-    const [yourPFP, setYourPFP] = useState("");
     const [content, setContent] = useState("");
-    const [contentImage, setContentImage] = useState("");
 
     const handleResetInputs = () => {
         setYourName("");
-        setYourPFP("");
         setContent("");
-        setContentImage("");
     }
 
     useEffect(() => {
         setYourName(props.sender);
-        setYourPFP(props.senderPFP);
         setContent(props.content);
-        setContentImage(props.imageUrl);
     }, [props])
 
 
@@ -39,23 +33,11 @@ const Tweet = (
                     value={yourName}
                     onChange={(e) => setYourName(e.target.value)}
                 />
-                <input
-                    type="text"
-                    placeholder="Your Profile Picture URL (Optional)"
-                    value={yourPFP}
-                    onChange={(e) => setYourPFP(e.target.value)}
-                />
                 <textarea
                     type="text"
                     placeholder="Content"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Content Image (Optional)"
-                    value={contentImage}
-                    onChange={(e) => setContentImage(e.target.value)}
                 />
                 <button
                     onClick={handleSaveData}
